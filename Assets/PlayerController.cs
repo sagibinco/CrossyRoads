@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     private Rigidbody2D rb2d;
+    public Sprite RightBoy;
+    public Sprite LeftBoy;
+    public Sprite Boy;
     void Start()
     {
         //Get and store a reference to the Rigidbody2D component so that we can access it.
@@ -22,7 +25,17 @@ public class PlayerController : MonoBehaviour
         {
             rb2d.MovePosition(end);
         }
-
-
+        if (moveHorizontal > 0)
+        {
+            GetComponent<SpriteRenderer>().sprite = LeftBoy;
+        }
+        if (moveHorizontal < 0)
+        {
+            GetComponent<SpriteRenderer>().sprite = RightBoy;
+        }
+        if (moveVertical > 0 && moveHorizontal == 0)
+        {
+            GetComponent<SpriteRenderer>().sprite = Boy;
+        }
     }
 }
